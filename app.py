@@ -7,6 +7,7 @@ from caching import cache
 from models.customer import Customer
 from models.product import Product
 from models.order import Order
+from models.orderproduct import order_product
 
 from routes.customerBP import customer_blueprint
 from routes.productBP import product_blueprint
