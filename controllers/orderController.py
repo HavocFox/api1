@@ -20,4 +20,9 @@ def save(): #name the controller the same as the service function
 @cache.cached(timeout=60)
 def find_all():
     all_orders = orderService.find_all()
-    return order_schema.jsonify(all_orders), 201
+    serialized_orders = orders_schema.dump(all_orders)
+    return jsonify(serialized_orders), 200
+
+def find_by_id(id):
+    orders = orderService.find_by_id(id)
+    return orders_schema.jsonify(orders),200
