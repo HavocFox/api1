@@ -15,3 +15,9 @@ def save():
 def find_all():
     all_orders = orderService.find_all()
     return order_schema.jsonify(all_orders), 201
+
+def find_all_paginate():
+    page = int(request.args.get("page"))
+    per_page = int(request.args.get("per_page"))
+    orders = orderService.find_all_paginate(page, per_page)
+    return orders_schema.jsonify(orders),200
