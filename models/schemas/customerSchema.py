@@ -15,3 +15,7 @@ class CustomerSchema(ma.Schema):
     
 customer_schema = CustomerSchema()
 customers_schema = CustomerSchema(many=True, exclude=["password"])
+
+class CustomerOrderSchema(ma.Schema):
+    name = fields.String(required=True)
+    email = fields.Email(required= True)

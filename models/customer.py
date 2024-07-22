@@ -13,6 +13,8 @@ class Customer(Base):
 
     orders: Mapped[List["Order"]] = db.relationship(back_populates="customer")
 
+    
+
    
 
 

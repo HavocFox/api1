@@ -9,8 +9,6 @@ class Order(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     date: Mapped[datetime.date] = mapped_column(db.Date, nullable=False)
     customer_id: Mapped[int] = mapped_column(db.ForeignKey('Customers.id'))
-
-    
     # Many-To-One: Order and Customer     
     customer: Mapped["Customer"] = db.relationship(back_populates="orders")
     # Many-to-Many: Products and Orders with no back_populates
