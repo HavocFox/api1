@@ -3,6 +3,7 @@ from models.schemas.productSchema import product_schema, products_schema
 from services import productService
 from marshmallow import ValidationError
 from caching import cache
+from utils.util import user_token_required
 
 
 def save(): #name the controller the same as the service function
@@ -17,7 +18,7 @@ def save(): #name the controller the same as the service function
     product_saved = productService.save(product_data)
     return product_schema.jsonify(product_data), 201
 
-@cache.cached(timeout=60)
+#@cache.cached(timeout=60)
 def find_all():
     all_products = productService.find_all()
     return products_schema.jsonify(all_products), 201

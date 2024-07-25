@@ -10,10 +10,11 @@ class Customer(Base):
     phone: Mapped[str] = mapped_column(db.String(20), nullable=False)
     username: Mapped[str] = mapped_column(db.String(255), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(db.String(255), nullable=False)
+    role_id: Mapped[int] = mapped_column(db.ForeignKey('Roles.id'))
 
+    role: Mapped['Role'] = db.relationship()
+    # One-to-Many: Customer and Order
     orders: Mapped[List["Order"]] = db.relationship(back_populates="customer")
-
-    
 
    
 
